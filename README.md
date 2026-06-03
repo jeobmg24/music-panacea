@@ -1,5 +1,8 @@
 # Cross-Queue — Demo Home Page
 
+## The problem
+When partying with my friends, the music is a must! However, we are split between Apple Music users and Spotify users, which leads to people annoyingly having to ask the host for their phone to add songs to queue if they have another music service as the host
+
 This is a minimal static demo for a home page that lets a host sign in with Spotify or Apple Music and lets guests join via Web Bluetooth.
 
 Files:
