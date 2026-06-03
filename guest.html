@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cross-Queue — Join</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+  <!-- ── NAME SCREEN (always first) ────────────────────────────────── -->
+  <main id="nameScreen" class="screen">
+    <div class="container narrow">
+      <h1>Cross-Queue</h1>
+      <p class="lead">What is your name??</p>
+      <div class="card">
+        <h2>Your Name</h2>
+        <input id="nameInput" type="text" placeholder="e.g. Alex" maxlength="30"
+               autocomplete="off" spellcheck="false" />
+        <button id="continueBtn" class="service-btn" style="margin-top:10px">Continue</button>
+        <div id="nameStatus" class="status-msg" role="status"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── JOIN SCREEN (no session param in URL) ──────────────────────── -->
+  <main id="joinScreen" class="screen hidden">
+    <div class="container narrow">
+      <h1>Cross-Queue</h1>
+      <p class="lead">Paste the link your host shared with you.</p>
+      <div class="card">
+        <div class="join-form">
+          <input id="codeInput" type="text" placeholder="Paste session link"
+                 autocomplete="off" spellcheck="false" />
+          <button id="joinBtn" class="service-btn">Join</button>
+        </div>
+        <div id="joinStatus" class="status-msg" role="status"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── CONNECTING SCREEN ──────────────────────────────────────────── -->
+  <main id="connectingScreen" class="screen hidden">
+    <div class="container narrow center-content">
+      <div class="spinner"></div>
+      <p id="connectingMsg" class="lead">Connecting to host…</p>
+    </div>
+  </main>
+
+  <!-- ── REQUEST SCREEN ─────────────────────────────────────────────── -->
+  <main id="requestScreen" class="screen hidden">
+    <div class="container narrow">
+
+      <header class="dash-header">
+        <div>
+          <h1>Cross-Queue</h1>
+          <p class="lead" id="sessionLabel">Request a song.</p>
+        </div>
+      </header>
+
+      <!-- Search -->
+      <div class="card search-card">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input id="searchInput" type="text" class="search-input" placeholder="Search songs, artists…"
+                 autocomplete="off" spellcheck="false" />
+          <button id="clearSearch" class="clear-btn hidden" aria-label="Clear">✕</button>
+        </div>
+
+        <ul id="searchResults" class="search-results hidden" role="listbox"></ul>
+        <p id="searchHint" class="search-hint">Start typing to search Spotify.</p>
+        <p id="searchStatus" class="status-msg" role="status"></p>
+      </div>
+
+      <!-- My requests -->
+      <div class="card" id="myRequestsCard" style="display:none">
+        <span class="section-label">Your Requests</span>
+        <ul id="myRequestsList" class="request-list"></ul>
+      </div>
+
+      <!-- Now playing + queue -->
+      <div class="card" id="queueCard" style="display:none">
+        <span class="section-label">Up Next</span>
+        <div id="nowPlayingRow" class="now-playing-row hidden">
+          <span class="now-playing-label">Now Playing</span>
+          <div id="nowPlayingItem"></div>
+        </div>
+        <ul id="queueList" class="request-list queue-list"></ul>
+        <p id="queueEmpty" class="queue-empty hidden">Queue is empty.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="guest.js"></script>
+</body>
+</html>
